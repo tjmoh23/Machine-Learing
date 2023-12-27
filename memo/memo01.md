@@ -22,13 +22,17 @@ train data로 각각의 모델을 학습시키고, test data로 각 모델의 �
 - 정리하자면,
     - **train** : 모델을 학습하기 위한 데이터셋 (only 학습)
     - **validation** : 이미 학습이 완료된 모델을 검증하기 위한 데이터셋, 여러 모델 중 최적의 모델을 고르기 위한 데이터셋
-    -  **test** : 모델의 최종 성능을 평가하기 위한 데이터셋 (학습 과정에 관여 X)
+    - **test** : 모델의 최종 성능을 평가하기 위한 최종적인 데이터셋 (학습 과정에 관여 X)
+  
+train으로 모델을 만든 뒤, validation으로 최종 모델을 선택한다. 최종 모델의 성능을 보기 위해 test를 사용하여 마지막으로 성능을 평가한다.
+
+그 다음, 실제 사용하기 전에, 나누었던 train, validation, test를 모두 합친 후 모델을 다시 훈련시켜 최종 모델을 만드는 방법도 있다.
 
 ### **1-3. 데이터 분할**
 - 보통 데이터를 분할할 때는 train : test = 8 : 2 (또는 7:3)로 나눈다.
 - validation을 포함할 경우, train : validation : test = 6 : 2 : 2 로 보통 사용한다.
 - train data 성능은 높은 반면, validation data의 성능이 낮다면 해당 모델은 과적합(Overfitting)되었을 가능성이 크다. 이를 막기 위해서는 train의 성능을 좀 포기하더라도 validation의 성능과 비슷하게 맞춰줄 필요가 있다.
-- 전체 데이터의 양이 적을 경우, train data를 K-fold 방식으로 쪼개서 모든 데이터를 train과 validation 과정에 사용할 수 있다.
+- 전체 데이터의 양이 적을 경우, train data를 K-fold(교차검증) 방식으로 쪼개서 모든 데이터를 train과 validation 과정에 사용할 수 있다.
 
 
 ------
